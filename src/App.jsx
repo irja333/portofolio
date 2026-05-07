@@ -90,7 +90,7 @@ export default function App() {
       <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-slate-900/80 backdrop-blur-md shadow-lg py-4' : 'bg-transparent py-6'}`}>
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
           <div className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent cursor-pointer" onClick={() => scrollToSection('beranda')}>
-            Irja<span className="text-cyan-400">Zahidi.</span>
+            Irja<span className="text-cyan-400"> Zahidi</span>
           </div>
           
           {/* Desktop Menu */}
@@ -197,6 +197,7 @@ export default function App() {
               </div>
               <div className="absolute bottom-10 left-0 md:-left-10 bg-slate-800/80 backdrop-blur-sm px-6 py-3 rounded-2xl border border-slate-700 shadow-xl animate-bounce" style={{animationDuration: '4s'}}>
                 <span className="text-purple-400 font-bold">Web Development</span>
+                <p className="text-xs text-slate-400"> </p>
               </div>
             </div>
           </div>
@@ -207,7 +208,7 @@ export default function App() {
           <div className="max-w-7xl mx-auto px-6 md:px-12">
             <div className="flex flex-col md:flex-row gap-16 items-center">
               <div className="md:w-1/2 space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold text-slate-100"><span className="text-cyan-400">Tentang Saya</span>
+                <h2 className="text-3xl md:text-4xl font-bold text-slate-100"><span className="text-cyan-400">Tentang Saya</span> </h2>
                 <div className="w-20 h-1 bg-cyan-500 rounded-full"></div>
                 <p className="text-slate-400 text-lg leading-relaxed">
                   Saya merupakan lulusan baru dari Program Studi Pendidikan Teknologi Informasi yang bersemangat dan berdedikasi tinggi dalam bidang teknologi dan pengembangan web. Selama masa studi, saya aktif terlibat dalam berbagai proyek pengembangan web serta menguasai dasar-dasar pemrograman.
@@ -307,7 +308,7 @@ export default function App() {
         <section id="karya" className="py-24 bg-slate-900/50">
           <div className="max-w-7xl mx-auto px-6 md:px-12">
             <div className="flex items-center gap-4 mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-100"><span className="text-cyan-400">Jurnal & Sertifikasi</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-100"><span className="text-cyan-400">Jurnal & Sertifikasi</span> </h2>
               <div className="h-[1px] flex-1 bg-slate-700 ml-4 hidden sm:block"></div>
             </div>
 
@@ -355,7 +356,7 @@ export default function App() {
         {/* KONTAK SECTION */}
         <section id="kontak" className="py-24">
           <div className="max-w-3xl mx-auto px-6 md:px-12 text-center space-y-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-100"><span className="text-cyan-400">Mari Berkolaborasi</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-100"><span className="text-cyan-400">Mari Berkolaborasi</span> Mari Berkolaborasi</h2>
             <p className="text-slate-400 text-lg leading-relaxed">
               Saya selalu terbuka untuk mendiskusikan peluang kerja, pengembangan proyek, atau sekadar bertukar ide. Jangan ragu untuk menghubungi saya!
             </p>
