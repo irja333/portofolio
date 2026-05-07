@@ -185,7 +185,7 @@ export default function App() {
               <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/20 to-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
               <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-slate-800/50 shadow-2xl flex items-center justify-center bg-slate-900">
                 <img 
-                  src="Screenshot_2025-10-18-12-45-52-134_com.google.android.googlequicksearchbox.png" 
+                  src="/IRJAZAHIDI.png" 
                   alt="Foto Profil Irja Zahidi" 
                   className="w-full h-full object-cover"
                 />
