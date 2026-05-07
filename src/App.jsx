@@ -356,7 +356,7 @@ export default function App() {
         {/* KONTAK SECTION */}
         <section id="kontak" className="py-24">
           <div className="max-w-3xl mx-auto px-6 md:px-12 text-center space-y-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-100"><span className="text-cyan-400">Mari Berkolaborasi</span> Mari Berkolaborasi</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-100"><span className="text-cyan-400">Mari Berkolaborasi</span> </h2>
             <p className="text-slate-400 text-lg leading-relaxed">
               Saya selalu terbuka untuk mendiskusikan peluang kerja, pengembangan proyek, atau sekadar bertukar ide. Jangan ragu untuk menghubungi saya!
             </p>
