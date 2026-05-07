@@ -196,8 +196,7 @@ export default function App() {
                 <p className="text-xs text-slate-400">UIN Ar-Raniry</p>
               </div>
               <div className="absolute bottom-10 left-0 md:-left-10 bg-slate-800/80 backdrop-blur-sm px-6 py-3 rounded-2xl border border-slate-700 shadow-xl animate-bounce" style={{animationDuration: '4s'}}>
-                <span className="text-purple-400 font-bold">IPK 3.57</span>
-                <p className="text-xs text-slate-400">Lulusan Terbaik</p>
+                <span className="text-purple-400 font-bold">Web Development</span>
               </div>
             </div>
           </div>
@@ -208,7 +207,7 @@ export default function App() {
           <div className="max-w-7xl mx-auto px-6 md:px-12">
             <div className="flex flex-col md:flex-row gap-16 items-center">
               <div className="md:w-1/2 space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold text-slate-100"><span className="text-cyan-400">01.</span> Tentang Saya</h2>
+                <h2 className="text-3xl md:text-4xl font-bold text-slate-100"><span className="text-cyan-400">Tentang Saya</span>
                 <div className="w-20 h-1 bg-cyan-500 rounded-full"></div>
                 <p className="text-slate-400 text-lg leading-relaxed">
                   Saya merupakan lulusan baru dari Program Studi Pendidikan Teknologi Informasi yang bersemangat dan berdedikasi tinggi dalam bidang teknologi dan pengembangan web. Selama masa studi, saya aktif terlibat dalam berbagai proyek pengembangan web serta menguasai dasar-dasar pemrograman.
@@ -308,7 +307,7 @@ export default function App() {
         <section id="karya" className="py-24 bg-slate-900/50">
           <div className="max-w-7xl mx-auto px-6 md:px-12">
             <div className="flex items-center gap-4 mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-100"><span className="text-cyan-400">02.</span> Sertifikasi & Portofolio</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-100"><span className="text-cyan-400">Jurnal & Sertifikasi</span>
               <div className="h-[1px] flex-1 bg-slate-700 ml-4 hidden sm:block"></div>
             </div>
 
@@ -356,7 +355,7 @@ export default function App() {
         {/* KONTAK SECTION */}
         <section id="kontak" className="py-24">
           <div className="max-w-3xl mx-auto px-6 md:px-12 text-center space-y-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-100"><span className="text-cyan-400">03.</span> Mari Berkolaborasi</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-100"><span className="text-cyan-400">Mari Berkolaborasi</span>
             <p className="text-slate-400 text-lg leading-relaxed">
               Saya selalu terbuka untuk mendiskusikan peluang kerja, pengembangan proyek, atau sekadar bertukar ide. Jangan ragu untuk menghubungi saya!
             </p>
