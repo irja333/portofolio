@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Github, Linkedin, Mail, ExternalLink, Code, ChevronRight, Download, Briefcase, GraduationCap, Award, Instagram, Link as LinkIcon, Phone } from 'lucide-react';
+import { Menu, X, Github, Linkedin, Mail, ExternalLink, Code, ChevronRight, Download, Briefcase, GraduationCap, Award, Instagram, Link as LinkIcon } from 'lucide-react';
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -373,8 +373,9 @@ export default function App() {
                 target="_blank" rel="noreferrer"
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-transparent border-2 border-slate-700 hover:border-cyan-500 hover:text-cyan-400 text-slate-300 font-bold text-lg transition-colors w-full sm:w-auto justify-center"
               >
-                <Phone size={24} /> WhatsApp Saya
+                WhatsApp Saya
               </a>
+            </div>
 
             <div className="pt-16 flex justify-center gap-6">
               <a href="https://www.linkedin.com/in/irja-zahidi" target="_blank" rel="noreferrer" className="text-slate-500 hover:text-blue-500 transition-colors bg-slate-900 p-4 rounded-full border border-slate-800 hover:border-blue-500"><Linkedin size={24} /></a>
