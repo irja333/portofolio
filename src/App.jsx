@@ -369,7 +369,6 @@ export default function App() {
                 <Mail size={24} /> Email Saya
               </a>
               <a 
-              <a 
                 href="https://wa.me/6282275576880" 
                 target="_blank" rel="noreferrer"
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-transparent border-2 border-slate-700 hover:border-cyan-500 hover:text-cyan-400 text-slate-300 font-bold text-lg transition-colors w-full sm:w-auto justify-center"
