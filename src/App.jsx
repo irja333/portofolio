@@ -35,7 +35,7 @@ export default function App() {
     {
       title: "Data Entry",
       company: "Lembaga Pendamping Proses Produk Halal YSPDI Robbani",
-      period: "Feb 2026 - Mar 2026",
+      period: "Feb 2026 - Sekarang",
       desc: "Input data untuk membuat NIB (Nomor Induk Berusaha)."
     },
     {
@@ -48,7 +48,7 @@ export default function App() {
       title: "Tentor Les Private",
       company: "Les Private BNA",
       period: "Jun 2024 - Jul 2024",
-      desc: "Mengajar sebagai Guru les private yang datang langsung kerumah siswa."
+      desc: "Mengajar pelajaran Informatika yang datang langsung kerumah siswa."
     },
     {
       title: "Administrasi",
@@ -95,7 +95,7 @@ export default function App() {
           
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-8 items-center">
-            {['Beranda', 'Tentang', 'Pengalaman', 'Karya', 'Kontak'].map((item) => (
+            {['Beranda', 'Tentang', 'Pengalaman', 'Hasil', 'Kontak'].map((item) => (
               <button 
                 key={item}
                 onClick={() => scrollToSection(item.toLowerCase())}
@@ -122,7 +122,7 @@ export default function App() {
         {/* Mobile Menu Dropdown */}
         {isMenuOpen && (
           <div className="md:hidden absolute top-full left-0 w-full bg-slate-900/95 backdrop-blur-xl border-t border-slate-800 flex flex-col py-4 px-6 shadow-2xl">
-            {['Beranda', 'Tentang', 'Pengalaman', 'Karya', 'Kontak'].map((item) => (
+            {['Beranda', 'Tentang', 'Pengalaman', 'Hasil', 'Kontak'].map((item) => (
               <button 
                 key={item}
                 onClick={() => scrollToSection(item.toLowerCase())}
@@ -167,7 +167,7 @@ export default function App() {
               
               <div className="flex flex-wrap gap-4 pt-4">
                 <button onClick={() => scrollToSection('karya')} className="px-6 py-3 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 flex items-center gap-2 group">
-                  Lihat Karya <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                  Lihat Hasil <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </button>
                 <a href="/CV - IRJA ZAHIDI.pdf" download="CV_Irja_Zahidi.pdf" className="px-6 py-3 rounded-full border-2 border-cyan-500/50 text-cyan-400 font-semibold hover:bg-cyan-500 hover:text-slate-900 transition-all duration-300 flex items-center gap-2 group">
                   <Download size={18} className="group-hover:-translate-y-1 transition-transform" /> Unduh CV
