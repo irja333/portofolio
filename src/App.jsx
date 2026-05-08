@@ -36,7 +36,7 @@ export default function App() {
       title: "Data Entry",
       company: "Lembaga Pendamping Proses Produk Halal YSPDI Robbani",
       period: "Feb 2026 - Sekarang",
-      desc: "Input data untuk membuat NIB (Nomor Induk Berusaha)."
+      desc: "Menginput data untuk membuat sertifikat halal."
     },
     {
       title: "Guru Informatika",
@@ -208,7 +208,7 @@ export default function App() {
           <div className="max-w-7xl mx-auto px-6 md:px-12">
             <div className="flex flex-col md:flex-row gap-16 items-center">
               <div className="md:w-1/2 space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold text-slate-100"><span className="text-cyan-400">01.</span> Tentang Saya</h2>
+                <h2 className="text-3xl md:text-4xl font-bold text-slate-100"><span className="text-cyan-400">Tentang Saya</span> </h2>
                 <div className="w-20 h-1 bg-cyan-500 rounded-full"></div>
                 <p className="text-slate-400 text-lg leading-relaxed">
                   Saya merupakan lulusan baru dari Program Studi Pendidikan Teknologi Informasi yang bersemangat dan berdedikasi tinggi dalam bidang teknologi dan pengembangan web. Selama masa studi, saya aktif terlibat dalam berbagai proyek pengembangan web serta menguasai dasar-dasar pemrograman.
@@ -388,7 +388,7 @@ export default function App() {
         {/* KONTAK SECTION */}
         <section id="kontak" className="py-24">
           <div className="max-w-3xl mx-auto px-6 md:px-12 text-center space-y-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-100"><span className="text-cyan-400">03.</span> Mari Berkolaborasi</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-100"><span className="text-cyan-400">Mari Berkolaborasi</span> </h2>
             <p className="text-slate-400 text-lg leading-relaxed">
               Saya selalu terbuka untuk mendiskusikan peluang kerja, pengembangan proyek, atau sekadar bertukar ide. Jangan ragu untuk menghubungi saya!
             </p>
