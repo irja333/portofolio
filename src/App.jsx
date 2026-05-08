@@ -207,8 +207,8 @@ export default function App() {
         <section id="tentang" className="py-24 bg-slate-900/50">
           <div className="max-w-7xl mx-auto px-6 md:px-12">
             <div className="flex flex-col md:flex-row gap-16 items-center">
-              <div className="md:w-1/2 space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold text-slate-100"><span className="text-cyan-400">Tentang Saya</span> </h2>
+            <div className="md:w-1/2 space-y-6">
+                <h2 className="text-3xl md:text-4xl font-bold text-slate-100"><span className="text-cyan-400">01.</span> Tentang Saya</h2>
                 <div className="w-20 h-1 bg-cyan-500 rounded-full"></div>
                 <p className="text-slate-400 text-lg leading-relaxed">
                   Saya merupakan lulusan baru dari Program Studi Pendidikan Teknologi Informasi yang bersemangat dan berdedikasi tinggi dalam bidang teknologi dan pengembangan web. Selama masa studi, saya aktif terlibat dalam berbagai proyek pengembangan web serta menguasai dasar-dasar pemrograman.
@@ -216,6 +216,28 @@ export default function App() {
                 <p className="text-slate-400 text-lg leading-relaxed">
                   Selain itu, saya mahir menggunakan Microsoft Office untuk keperluan administrasi dan pengolahan data, maupun media digital. Saya memiliki kemampuan untuk bekerja secara mandiri maupun dalam tim, serta berkomitmen untuk terus belajar, beradaptasi dengan perkembangan teknologi, dan memberikan kontribusi positif di dunia kerja.
                 </p>
+                
+                {/* Informasi Pribadi */}
+                <div className="pt-6 mt-6 border-t border-slate-700/50">
+                  <ul className="space-y-3">
+                    <li className="flex flex-col sm:flex-row sm:items-center text-slate-300">
+                      <span className="font-semibold text-slate-400 w-32">Tanggal Lahir</span>
+                      <span className="hidden sm:inline-block mr-2 text-cyan-400">:</span>
+                      <span className="font-medium text-slate-200">05 Desember 2003</span>
+                    </li>
+                    <li className="flex flex-col sm:flex-row sm:items-center text-slate-300">
+                      <span className="font-semibold text-slate-400 w-32">Domisili</span>
+                      <span className="hidden sm:inline-block mr-2 text-cyan-400">:</span>
+                      <span className="font-medium text-slate-200">Banda Aceh, Aceh, Indonesia</span>
+                    </li>
+                    <li className="flex flex-col sm:flex-row sm:items-center text-slate-300">
+                      <span className="font-semibold text-slate-400 w-32">Daerah Asal</span>
+                      <span className="hidden sm:inline-block mr-2 text-cyan-400">:</span>
+                      <span className="font-medium text-slate-200">Aceh Selatan, Aceh, Indonesia</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
               </div>
               <div className="md:w-1/2 w-full">
                 <h3 className="text-xl font-semibold text-slate-200 mb-6 flex items-center gap-2">
