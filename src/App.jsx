@@ -68,7 +68,7 @@ export default function App() {
       title: "Data Entry",
       company: "Lembaga Pendamping Proses Produk Halal YSPDI Robbani",
       period: "Feb 2026 - Sekarang",
-      desc: "Input data untuk membuat NIB (Nomor Induk Berusaha)."
+      desc: "Bertugas untuk menginput data untuk membuat Sertifikat Halal."
     },
     {
       title: "Guru Informatika",
@@ -80,7 +80,7 @@ export default function App() {
       title: "Tentor Les Private",
       company: "Les Private BNA",
       period: "Jun 2024 - Jul 2024",
-      desc: "Mengajar pelajaran Informatika yang datang langsung kerumah siswa."
+      desc: "Mengajar pelajaran Informatika yang datang langsung kerumah murid-murid."
     },
     {
       title: "Administrasi",
