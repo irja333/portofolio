@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Github, Linkedin, Mail, ExternalLink, Code, ChevronRight, Download, Briefcase, GraduationCap, Award, Instagram, Link as LinkIcon } from 'lucide-react';
+import { Menu, X, Github, Linkedin, Mail, ExternalLink, Code, ChevronRight, Download, Briefcase, GraduationCap, Award, Instagram, Link as LinkIcon, Phone } from 'lucide-react';
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -207,7 +207,7 @@ export default function App() {
         <section id="tentang" className="py-24 bg-slate-900/50">
           <div className="max-w-7xl mx-auto px-6 md:px-12">
             <div className="flex flex-col md:flex-row gap-16 items-center">
-            <div className="md:w-1/2 space-y-6">
+              <div className="md:w-1/2 space-y-6">
                 <h2 className="text-3xl md:text-4xl font-bold text-slate-100"><span className="text-cyan-400">01.</span> Tentang Saya</h2>
                 <div className="w-20 h-1 bg-cyan-500 rounded-full"></div>
                 <p className="text-slate-400 text-lg leading-relaxed">
@@ -237,7 +237,6 @@ export default function App() {
                     </li>
                   </ul>
                 </div>
-              </div>
               </div>
               <div className="md:w-1/2 w-full">
                 <h3 className="text-xl font-semibold text-slate-200 mb-6 flex items-center gap-2">
@@ -389,7 +388,7 @@ export default function App() {
         {/* KONTAK SECTION */}
         <section id="kontak" className="py-24">
           <div className="max-w-3xl mx-auto px-6 md:px-12 text-center space-y-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-100"><span className="text-cyan-400">Mari Berkolaborasi</span> </h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-100"><span className="text-cyan-400">03.</span> Mari Berkolaborasi</h2>
             <p className="text-slate-400 text-lg leading-relaxed">
               Saya selalu terbuka untuk mendiskusikan peluang kerja, pengembangan proyek, atau sekadar bertukar ide. Jangan ragu untuk menghubungi saya!
             </p>
@@ -406,7 +405,7 @@ export default function App() {
                 target="_blank" rel="noreferrer"
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-transparent border-2 border-slate-700 hover:border-cyan-500 hover:text-cyan-400 text-slate-300 font-bold text-lg transition-colors w-full sm:w-auto justify-center"
               >
-                WhatsApp Saya
+                <Phone size={24} /> WhatsApp Saya
               </a>
             </div>
 
