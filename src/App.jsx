@@ -314,14 +314,25 @@ export default function App() {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {/* Card Jurnal/Proyek */}
-              <div className="group rounded-2xl overflow-hidden bg-slate-800 border border-slate-700 hover:border-slate-500 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-cyan-500/10 flex flex-col">
-                <div className={`h-48 w-full bg-gradient-to-br from-blue-600 to-cyan-500 relative overflow-hidden`}>
+              <a 
+                href="https://ojs.trigunadharma.ac.id/index.php/jsi/article/view/11696" 
+                target="_blank" 
+                rel="noreferrer" 
+                className="group rounded-2xl overflow-hidden bg-slate-800 border border-slate-700 hover:border-slate-500 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-cyan-500/10 flex flex-col"
+              >
+                <div className="h-48 w-full bg-gradient-to-br from-blue-600 to-cyan-500 relative overflow-hidden">
                   <div className="absolute inset-0 bg-slate-900/20 group-hover:bg-transparent transition-colors duration-300 flex items-center justify-center">
-                    <Code size={48} className="text-white/50 group-hover:scale-110 transition-transform" />
+                    <div className="flex flex-col items-center gap-2">
+                      <Code size={48} className="text-white/50 group-hover:scale-110 transition-transform" />
+                      <span className="opacity-0 group-hover:opacity-100 transition-opacity text-white/90 text-xs font-bold uppercase tracking-widest">Buka Jurnal</span>
+                    </div>
                   </div>
                 </div>
                 <div className="p-6 flex-1 flex flex-col">
-                  <span className="text-xs font-bold text-cyan-400 mb-2 tracking-wider uppercase">Jurnal Web</span>
+                  <div className="flex justify-between items-start mb-2">
+                    <span className="text-xs font-bold text-cyan-400 tracking-wider uppercase">Jurnal Web</span>
+                    <ExternalLink size={18} className="text-slate-500 group-hover:text-cyan-400 transition-colors" />
+                  </div>
                   <h3 className="text-xl font-bold text-slate-100 mb-3 group-hover:text-cyan-400 transition-colors">Aplikasi E-Katalog Genta Fiberglass</h3>
                   <p className="text-slate-400 text-sm mb-6 flex-1">Perancangan aplikasi E-Katalog berbasis web yang dikembangkan untuk wilayah Aceh Selatan.</p>
                   <div className="flex flex-wrap gap-2 mt-auto">
@@ -329,7 +340,7 @@ export default function App() {
                     <span className="text-xs font-medium px-2.5 py-1 bg-slate-900 text-cyan-400 rounded-md border border-slate-700/50">E-Katalog</span>
                   </div>
                 </div>
-              </div>
+              </a>
 
               {/* Sertifikat Cards */}
               {certificates.map((cert, index) => (
