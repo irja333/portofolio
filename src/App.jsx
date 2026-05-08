@@ -166,7 +166,7 @@ export default function App() {
               </p>
               
               <div className="flex flex-wrap gap-4 pt-4">
-                <button onClick={() => scrollToSection('karya')} className="px-6 py-3 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 flex items-center gap-2 group">
+                <button onClick={() => scrollToSection('hasil')} className="px-6 py-3 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 flex items-center gap-2 group">
                   Lihat Hasil <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </button>
                 <a href="/CV - IRJA ZAHIDI.pdf" download="CV_Irja_Zahidi.pdf" className="px-6 py-3 rounded-full border-2 border-cyan-500/50 text-cyan-400 font-semibold hover:bg-cyan-500 hover:text-slate-900 transition-all duration-300 flex items-center gap-2 group">
@@ -304,8 +304,8 @@ export default function App() {
           </div>
         </section>
 
-        {/* KARYA / SERTIFIKAT SECTION */}
-        <section id="karya" className="py-24 bg-slate-900/50">
+        {/* hasil / SERTIFIKAT SECTION */}
+        <section id="hasil" className="py-24 bg-slate-900/50">
           <div className="max-w-7xl mx-auto px-6 md:px-12">
             <div className="flex items-center gap-4 mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-slate-100"><span className="text-cyan-400">Jurnal & Sertifikasi</span> </h2>
