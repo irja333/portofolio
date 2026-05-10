@@ -68,7 +68,7 @@ export default function App() {
       title: "Data Entry",
       company: "Lembaga Pendamping Proses Produk Halal YSPDI Robbani",
       period: "Feb 2026 - Sekarang",
-      desc: "Bertugas untuk menginput data untuk membuat Sertifikat Halal."
+      desc: "Bertugas menginput data untuk membantu pelaku usaha mendapatkan sertifikat halal."
     },
     {
       title: "Guru Informatika",
