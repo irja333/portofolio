@@ -1260,6 +1260,12 @@
             formData.append('Waktu Pengambilan', infoDate.textContent);
             formData.append('Akurasi GPS', infoAccuracy.textContent);
             
+            // Add dynamic clickable Google Maps link for easy verification in email
+            if (infoLat.textContent !== '-' && infoLon.textContent !== '-') {
+                const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${infoLat.textContent},${infoLon.textContent}`;
+                formData.append('Link Google Maps', mapsUrl);
+            }
+            
             // Add custom FormSubmit fields
             formData.append('_subject', 'Laporan Penampakan Dugong Baru - Terverifikasi Kamera/GPS');
             formData.append('_template', 'table'); // Professional table layout for email
