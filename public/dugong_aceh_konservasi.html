@@ -130,10 +130,9 @@
                 <div class="flex items-center">
                     <!-- Logo / Brand -->
                     <a href="#" class="flex items-center gap-3 group">
-                        <div
-                            class="w-10 h-10 rounded-full border border-neon-cyan flex items-center justify-center text-neon-cyan group-hover:shadow-neon transition-all duration-300">
-                            <i class="fa-solid fa-water text-xl"></i>
-                        </div>
+                        <img src="NaturalAceh.png" 
+                             alt="Natural Aceh Logo" 
+                             class="w-10 h-10 object-contain rounded-full border border-neon-cyan/40 p-0.5 group-hover:shadow-neon group-hover:border-neon-cyan transition-all duration-300">
                         <span class="font-bold text-2xl tracking-tight text-white">Dugong<span
                                 class="text-neon-cyan font-light">Aceh</span></span>
                     </a>
@@ -220,64 +219,32 @@
                             perairan Aceh. Masa depan mereka ada di tangan kita.
                         </p>
                         <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start fade-in stagger-3">
-                            <a href="#donasi"
+                            <a href="#lapor"
                                 class="bg-neon-cyan hover:bg-white text-deep-sea px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 shadow-neon hover:shadow-neon-strong transform hover:-translate-y-1 text-center">
-                                Dukung Sekarang
+                                <i class="fa-solid fa-bullhorn mr-2"></i> Laporkan Sighting
                             </a>
-                            <a href="#edukasi"
+                            <a href="#program"
                                 class="glass-panel hover:bg-mid-cyan/40 text-white px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 text-center flex items-center justify-center gap-2 group">
-                                Pelajari <i
-                                    class="fa-solid fa-arrow-down group-hover:translate-y-1 transition-transform"></i>
+                                <i class="fa-solid fa-gift mr-2 text-neon-green"></i> Program Kerja & Imbalan
                             </a>
                         </div>
                     </div>
 
-                    <!-- Hero Illustration (Glowing SVG) -->
-                    <div class="hidden lg:flex justify-center items-center fade-in stagger-2 relative">
-                        <div class="relative w-full max-w-lg aspect-square float">
-                            <svg viewBox="0 0 500 500" class="w-full h-full drop-shadow-2xl relative z-10"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <!-- Glowing aura -->
-                                <circle cx="250" cy="250" r="180" fill="url(#glowGradient)" opacity="0.6" />
-                                <defs>
-                                    <radialGradient id="glowGradient" cx="50%" cy="50%" r="50%">
-                                        <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.3" />
-                                        <stop offset="100%" stop-color="#062c3d" stop-opacity="0" />
-                                    </radialGradient>
-                                </defs>
+                    <!-- Hero Illustration (Authentic Photo) -->
+                    <div class="flex justify-center items-center fade-in stagger-2 relative w-full max-w-lg aspect-square float group">
+                        <div class="w-full h-full relative z-10 rounded-3xl overflow-hidden glass-panel border border-neon-cyan/20 shadow-neon group-hover:border-neon-cyan/50 group-hover:shadow-neon-strong transition-all duration-500">
+                            <!-- High-quality authentic photo -->
+                            <img src="dugong_seagrass.png" 
+                                 alt="Dugong Aceh" 
+                                 class="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-transform duration-700 select-none">
+                            
+                            <!-- Underwater neon overlay gradients -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-deep-sea via-transparent to-transparent opacity-40 pointer-events-none"></div>
+                            <div class="absolute inset-0 bg-neon-cyan/5 group-hover:bg-neon-cyan/0 transition-colors duration-500 pointer-events-none"></div>
 
-                                <!-- Seagrass (Neon Green) -->
-                                <path d="M 150 450 Q 170 300 120 200 Q 180 350 150 450" fill="none" stroke="#00ff9d"
-                                    stroke-width="8" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"
-                                    filter="drop-shadow(0 0 8px #00ff9d)" />
-                                <path d="M 250 470 Q 230 250 280 150 Q 220 300 250 470" fill="none" stroke="#00ff9d"
-                                    stroke-width="12" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"
-                                    filter="drop-shadow(0 0 10px #00ff9d)" />
-                                <path d="M 350 450 Q 320 300 380 220 Q 330 350 350 450" fill="none" stroke="#00ff9d"
-                                    stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"
-                                    filter="drop-shadow(0 0 6px #00ff9d)" />
-
-                                <!-- Abstract Dugong Outline (Neon Cyan) -->
-                                <path
-                                    d="M 120 250 C 120 180, 200 150, 300 180 C 350 195, 400 160, 420 180 C 420 200, 380 220, 360 220 C 360 260, 250 320, 150 280 C 130 272, 120 260, 120 250 Z"
-                                    fill="none" stroke="#00f0ff" stroke-width="4"
-                                    filter="drop-shadow(0 0 10px #00f0ff)" />
-                                <path
-                                    d="M 120 250 C 120 180, 200 150, 300 180 C 350 195, 400 160, 420 180 C 420 200, 380 220, 360 220 C 360 260, 250 320, 150 280 C 130 272, 120 260, 120 250 Z"
-                                    fill="#00f0ff" opacity="0.1" />
-
-                                <!-- Flipper -->
-                                <path d="M 220 250 C 230 280, 260 290, 270 270 C 270 250, 240 240, 220 250 Z"
-                                    fill="none" stroke="#00f0ff" stroke-width="3" />
-
-                                <!-- Glowing Bubbles -->
-                                <circle cx="100" cy="180" r="6" fill="#00f0ff" opacity="0.8"
-                                    filter="drop-shadow(0 0 5px #00f0ff)" />
-                                <circle cx="80" cy="140" r="3" fill="#00f0ff" opacity="0.6" />
-                                <circle cx="120" cy="110" r="8" fill="#00f0ff" opacity="0.5"
-                                    filter="drop-shadow(0 0 5px #00f0ff)" />
-                            </svg>
                         </div>
+                        <!-- Background glow -->
+                        <div class="absolute inset-0 bg-gradient-to-tr from-neon-cyan/15 to-neon-green/5 blur-3xl rounded-full opacity-60 pointer-events-none scale-90"></div>
                     </div>
                 </div>
             </div>
@@ -520,11 +487,11 @@
         <section id="program" class="py-24 bg-deep-sea">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
-                    <h2 class="text-xs font-bold text-neon-green tracking-[0.2em] uppercase mb-3">Aksi Nyata</h2>
-                    <h3 class="text-3xl sm:text-5xl font-bold text-white">Program Konservasi Kami</h3>
+                    <h2 class="text-xs font-bold text-neon-green tracking-[0.2em] uppercase mb-3">Aksi Nyata & Apresiasi</h2>
+                    <h3 class="text-3xl sm:text-5xl font-bold text-white">Program Kerja & Insentif Laporan</h3>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Program 1 -->
                     <div
                         class="bg-dark-cyan rounded-3xl overflow-hidden border border-mid-cyan/50 hover:border-neon-cyan transition-all duration-300 flex flex-col group hover:-translate-y-2 hover:shadow-neon">
@@ -592,6 +559,72 @@
                             <a href="#"
                                 class="text-blue-400 font-bold hover:text-white group-hover:tracking-wide inline-flex items-center text-sm transition-all">
                                 Lihat Peta <i
+                                    class="fa-solid fa-arrow-right ml-2 transform group-hover:translate-x-2 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Program 4: Insentif Pelapor -->
+                    <div
+                        class="bg-dark-cyan rounded-3xl overflow-hidden border border-mid-cyan/50 hover:border-neon-green transition-all duration-300 flex flex-col group hover:-translate-y-2 hover:shadow-[0_0_15px_rgba(0,255,157,0.3)]">
+                        <div
+                            class="h-48 bg-gradient-to-b from-emerald-900/40 to-transparent flex items-center justify-center relative overflow-hidden">
+                            <div
+                                class="absolute w-full h-full bg-neon-green/5 group-hover:bg-neon-green/10 transition-colors">
+                            </div>
+                            <i
+                                class="fa-solid fa-box-open text-6xl text-neon-green drop-shadow-[0_0_10px_rgba(0,255,157,0.8)] relative z-10 group-hover:scale-110 transition-transform"></i>
+                        </div>
+                        <div class="p-8 flex-grow flex flex-col bg-dark-cyan">
+                            <h4 class="text-xl font-bold text-white mb-3">Insentif Nelayan Pelapor</h4>
+                            <p class="text-text-muted mb-6 flex-grow text-sm leading-relaxed">Penyediaan sembako dan pengganti BBM operasional bagi nelayan tradisional pesisir Aceh yang berpartisipasi melaporkan penampakan dugong secara valid.</p>
+                            <a href="#lapor"
+                                class="text-neon-green font-bold hover:text-white group-hover:tracking-wide inline-flex items-center text-sm transition-all">
+                                Laporkan Sekarang <i
+                                    class="fa-solid fa-arrow-right ml-2 transform group-hover:translate-x-2 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Program 5: Kompensasi Alat Tangkap -->
+                    <div
+                        class="bg-dark-cyan rounded-3xl overflow-hidden border border-mid-cyan/50 hover:border-orange-400 transition-all duration-300 flex flex-col group hover:-translate-y-2 hover:shadow-[0_0_15px_rgba(251,146,60,0.3)]">
+                        <div
+                            class="h-48 bg-gradient-to-b from-orange-950/40 to-transparent flex items-center justify-center relative overflow-hidden">
+                            <div
+                                class="absolute w-full h-full bg-orange-400/5 group-hover:bg-orange-400/10 transition-colors">
+                            </div>
+                            <i
+                                class="fa-solid fa-shield-heart text-6xl text-orange-400 drop-shadow-[0_0_10px_rgba(251,146,60,0.8)] relative z-10 group-hover:scale-110 transition-transform"></i>
+                        </div>
+                        <div class="p-8 flex-grow flex flex-col bg-dark-cyan">
+                            <h4 class="text-xl font-bold text-white mb-3">Kompensasi Jaring</h4>
+                            <p class="text-text-muted mb-6 flex-grow text-sm leading-relaxed">Ganti rugi penuh atas kerusakan jaring nelayan akibat pelepasan dugong yang tidak sengaja terjerat (bycatch) secara sukarela dan aman.</p>
+                            <a href="#lapor"
+                                class="text-orange-400 font-bold hover:text-white group-hover:tracking-wide inline-flex items-center text-sm transition-all">
+                                Ajukan Klaim Laporan <i
+                                    class="fa-solid fa-arrow-right ml-2 transform group-hover:translate-x-2 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Program 6: Penghargaan Penjaga Adat -->
+                    <div
+                        class="bg-dark-cyan rounded-3xl overflow-hidden border border-mid-cyan/50 hover:border-neon-cyan transition-all duration-300 flex flex-col group hover:-translate-y-2 hover:shadow-neon">
+                        <div
+                            class="h-48 bg-gradient-to-b from-mid-cyan/40 to-transparent flex items-center justify-center relative overflow-hidden">
+                            <div
+                                class="absolute w-full h-full bg-neon-cyan/5 group-hover:bg-neon-cyan/10 transition-colors">
+                            </div>
+                            <i
+                                class="fa-solid fa-award text-6xl text-neon-cyan drop-shadow-[0_0_10px_rgba(0,240,255,0.8)] relative z-10 group-hover:scale-110 transition-transform"></i>
+                        </div>
+                        <div class="p-8 flex-grow flex flex-col bg-dark-cyan">
+                            <h4 class="text-xl font-bold text-white mb-3">Penghargaan Penjaga Adat</h4>
+                            <p class="text-text-muted mb-6 flex-grow text-sm leading-relaxed">Pemberian sertifikat formal dari BKSDA Aceh serta penghargaan tokoh adat pelestari laut bersama lembaga adat Panglima Laot.</p>
+                            <a href="#kontak"
+                                class="text-neon-cyan font-bold hover:text-white group-hover:tracking-wide inline-flex items-center text-sm transition-all">
+                                Informasi Adat <i
                                     class="fa-solid fa-arrow-right ml-2 transform group-hover:translate-x-2 transition-transform"></i>
                             </a>
                         </div>
@@ -726,7 +759,7 @@
                 </div>
 
                 <form class="glass-panel p-8 sm:p-10 rounded-3xl shadow-2xl relative" id="reportForm">
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                         <div>
                             <label class="block text-xs font-semibold tracking-wider text-neon-cyan mb-2 uppercase">Nama
                                 Pelapor</label>
@@ -742,18 +775,40 @@
                                 class="w-full bg-deep-sea/50 border border-mid-cyan/50 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan transition-all"
                                 placeholder="0812xxxx...">
                         </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                         <div>
                             <label
                                 class="block text-xs font-semibold tracking-wider text-neon-cyan mb-2 uppercase">Kondisi
                                 Dugong</label>
-                            <select name="Kondisi Dugong"
-                                class="w-full bg-deep-sea/50 border border-mid-cyan/50 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan transition-all appearance-none">
-                                <option value="hidup" class="bg-deep-sea text-white">Berenang bebas</option>
-                                <option value="terjerat" class="bg-deep-sea text-white">Terjerat jaring</option>
-                                <option value="terdampar_hidup" class="bg-deep-sea text-white">Terdampar (Hidup)
-                                </option>
-                                <option value="terdampar_mati" class="bg-deep-sea text-white">Terdampar (Mati)</option>
-                            </select>
+                            <div class="relative">
+                                <select name="Kondisi Dugong"
+                                    class="w-full bg-deep-sea/50 border border-mid-cyan/50 rounded-xl px-4 py-3 pr-10 text-white focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan transition-all appearance-none">
+                                    <option value="hidup" class="bg-deep-sea text-white">Berenang bebas</option>
+                                    <option value="terjerat" class="bg-deep-sea text-white">Terjerat jaring (Bycatch)</option>
+                                    <option value="terdampar_hidup" class="bg-deep-sea text-white">Terdampar (Hidup)</option>
+                                    <option value="terdampar_mati" class="bg-deep-sea text-white">Terdampar (Mati)</option>
+                                </select>
+                                <div class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none text-neon-cyan/60">
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <label
+                                class="block text-xs font-semibold tracking-wider text-neon-cyan mb-2 uppercase">Klaim Program Imbalan</label>
+                            <div class="relative">
+                                <select name="Klaim Imbalan"
+                                    class="w-full bg-deep-sea/50 border border-mid-cyan/50 rounded-xl px-4 py-3 pr-10 text-white focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan transition-all appearance-none">
+                                    <option value="tidak_mengklaim" class="bg-deep-sea text-white">Laporan Sukarela (Tanpa Klaim)</option>
+                                    <option value="insentif_pelapor" class="bg-deep-sea text-white">Insentif Nelayan Pelapor (Sembako & BBM)</option>
+                                    <option value="kompensasi_jaring" class="bg-deep-sea text-white">Kompensasi Jaring (Pelepasan Sukarela)</option>
+                                    <option value="penjaga_adat" class="bg-deep-sea text-white">Penghargaan Penjaga Adat (Apresiasi Adat)</option>
+                                </select>
+                                <div class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none text-neon-cyan/60">
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="mb-6">
@@ -845,10 +900,9 @@
                 <!-- Brand col -->
                 <div class="col-span-1 md:col-span-1">
                     <a href="#" class="flex items-center gap-2 mb-6">
-                        <div
-                            class="w-8 h-8 rounded-full border border-neon-cyan flex items-center justify-center text-neon-cyan">
-                            <i class="fa-solid fa-water text-sm"></i>
-                        </div>
+                        <img src="NaturalAceh.png" 
+                             alt="Natural Aceh Logo" 
+                             class="w-8 h-8 object-contain rounded-full border border-neon-cyan/40 p-0.5 hover:shadow-neon hover:border-neon-cyan transition-all duration-300">
                         <span class="font-bold text-xl text-white tracking-tight">Dugong<span
                                 class="text-neon-cyan font-light">Aceh</span></span>
                     </a>
@@ -888,9 +942,9 @@
                 <div>
                     <h4 class="text-white font-semibold mb-6 uppercase text-xs tracking-widest">Terlibat</h4>
                     <ul class="space-y-3 text-sm">
-                        <li><a href="#" class="hover:text-neon-green transition-colors flex items-center"><i
-                                    class="fa-solid fa-chevron-right text-[10px] mr-2 text-mid-cyan"></i> Donasi
-                                Sekarang</a></li>
+                        <li><a href="#program" class="hover:text-neon-green transition-colors flex items-center"><i
+                                    class="fa-solid fa-chevron-right text-[10px] mr-2 text-mid-cyan"></i> Imbalan
+                                Laporan</a></li>
                         <li><a href="#" class="hover:text-neon-green transition-colors flex items-center"><i
                                     class="fa-solid fa-chevron-right text-[10px] mr-2 text-mid-cyan"></i> Menjadi
                                 Relawan</a></li>
@@ -1500,6 +1554,7 @@
                     nama: formData.get('Nama Pelapor'),
                     whatsapp: formData.get('Nomor WhatsApp'),
                     kondisi: formData.get('Kondisi Dugong'),
+                    imbalan: formData.get('Klaim Imbalan'),
                     catatan: formData.get('Catatan Tambahan'),
                     latitude: infoLat.textContent,
                     longitude: infoLon.textContent,
