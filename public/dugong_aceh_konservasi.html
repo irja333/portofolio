@@ -759,7 +759,7 @@
                 </div>
 
                 <form class="glass-panel p-8 sm:p-10 rounded-3xl shadow-2xl relative" id="reportForm">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
                         <div>
                             <label class="block text-xs font-semibold tracking-wider text-neon-cyan mb-2 uppercase">Nama
                                 Pelapor</label>
@@ -775,8 +775,6 @@
                                 class="w-full bg-deep-sea/50 border border-mid-cyan/50 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan transition-all"
                                 placeholder="0812xxxx...">
                         </div>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                         <div>
                             <label
                                 class="block text-xs font-semibold tracking-wider text-neon-cyan mb-2 uppercase">Kondisi
@@ -788,22 +786,6 @@
                                     <option value="terjerat" class="bg-deep-sea text-white">Terjerat jaring (Bycatch)</option>
                                     <option value="terdampar_hidup" class="bg-deep-sea text-white">Terdampar (Hidup)</option>
                                     <option value="terdampar_mati" class="bg-deep-sea text-white">Terdampar (Mati)</option>
-                                </select>
-                                <div class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none text-neon-cyan/60">
-                                    <i class="fa-solid fa-chevron-down"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <label
-                                class="block text-xs font-semibold tracking-wider text-neon-cyan mb-2 uppercase">Klaim Program Imbalan</label>
-                            <div class="relative">
-                                <select name="Klaim Imbalan"
-                                    class="w-full bg-deep-sea/50 border border-mid-cyan/50 rounded-xl px-4 py-3 pr-10 text-white focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan transition-all appearance-none">
-                                    <option value="tidak_mengklaim" class="bg-deep-sea text-white">Laporan Sukarela (Tanpa Klaim)</option>
-                                    <option value="insentif_pelapor" class="bg-deep-sea text-white">Insentif Nelayan Pelapor (Sembako & BBM)</option>
-                                    <option value="kompensasi_jaring" class="bg-deep-sea text-white">Kompensasi Jaring (Pelepasan Sukarela)</option>
-                                    <option value="penjaga_adat" class="bg-deep-sea text-white">Penghargaan Penjaga Adat (Apresiasi Adat)</option>
                                 </select>
                                 <div class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none text-neon-cyan/60">
                                     <i class="fa-solid fa-chevron-down"></i>
@@ -1554,7 +1536,6 @@
                     nama: formData.get('Nama Pelapor'),
                     whatsapp: formData.get('Nomor WhatsApp'),
                     kondisi: formData.get('Kondisi Dugong'),
-                    imbalan: formData.get('Klaim Imbalan'),
                     catatan: formData.get('Catatan Tambahan'),
                     latitude: infoLat.textContent,
                     longitude: infoLon.textContent,
