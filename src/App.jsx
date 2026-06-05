@@ -120,6 +120,37 @@ export default function App() {
     }
   ];
 
+  // Data Proyek/Karya
+  const projects = [
+    {
+      title: "Aplikasi E-Katalog Genta Fiberglass",
+      category: "Jurnal Web",
+      desc: "Perancangan aplikasi E-Katalog berbasis web yang dikembangkan untuk mempermudah digitalisasi di wilayah Aceh Selatan.",
+      link: "https://ojs.trigunadharma.ac.id/index.php/jsi/article/view/11696",
+      tags: ["Web App", "E-Katalog", "UI/UX"],
+      btnText: "BACA JURNAL",
+      gradient: "group-hover:from-blue-600 group-hover:to-cyan-500"
+    },
+    {
+      title: "Dugong Aceh - Konservasi Laut",
+      category: "Aksi Konservasi",
+      desc: "Platform pemantauan populasi pesut laut dan pelestarian padang lamun di perairan Aceh dengan integrasi laporan dari nelayan lokal.",
+      link: "dugong_aceh_konservasi.html",
+      tags: ["Tailwind CSS", "Konservasi", "Peta/Laporan"],
+      btnText: "LIHAT PROYEK",
+      gradient: "group-hover:from-emerald-600 group-hover:to-teal-500"
+    },
+    {
+      title: "Age Tracker (Chronos Engine)",
+      category: "Web App Interaktif",
+      desc: "Aplikasi pelacak usia interaktif untuk menghitung statistik biologis (detak jantung, napas, orbit bumi) serta ramalan zodiak astronomis.",
+      link: "cek-umur.html",
+      tags: ["JavaScript", "Tailwind CSS", "Interactive"],
+      btnText: "BUKA APLIKASI",
+      gradient: "group-hover:from-cyan-600 group-hover:to-indigo-600"
+    }
+  ];
+
   // Data Sertifikat dari CV
   const certificates = [
     {
@@ -161,7 +192,7 @@ export default function App() {
               </button>
             ))}
             <a 
-              href="/CV - IRJA ZAHIDI.pdf" 
+              href="CV - IRJA ZAHIDI.pdf" 
               download="CV_Irja_Zahidi.pdf"
               className="ml-2 px-5 py-2 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all duration-300 text-sm font-semibold flex items-center gap-2"
             >
@@ -188,7 +219,7 @@ export default function App() {
               </button>
             ))}
             <a 
-              href="/CV - IRJA ZAHIDI.pdf" 
+              href="CV - IRJA ZAHIDI.pdf" 
               download="CV_Irja_Zahidi.pdf"
               className="mt-6 text-center py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/25"
             >
@@ -263,7 +294,7 @@ export default function App() {
               <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-full p-2 bg-gradient-to-tr from-cyan-500 via-blue-500 to-purple-600 shadow-[0_0_40px_rgba(6,182,212,0.3)] hover:scale-105 transition-transform duration-500">
                 <div className="w-full h-full rounded-full overflow-hidden border-4 border-slate-950 bg-slate-900">
                   <img 
-                    src="/IRJA-ZAHIDI.jpeg" 
+                    src="IRJA-ZAHIDI.jpeg" 
                     alt="Foto Profil Irja Zahidi" 
                     className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
                   />
@@ -494,38 +525,41 @@ export default function App() {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               
               {/* Card Jurnal/Proyek */}
-              <a 
-                href="https://ojs.trigunadharma.ac.id/index.php/jsi/article/view/11696" 
-                target="_blank" 
-                rel="noreferrer" 
-                className="group rounded-3xl overflow-hidden bg-slate-900 border border-slate-800 hover:border-cyan-500/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(6,182,212,0.3)] flex flex-col h-full"
-              >
-                <div className="h-56 w-full bg-gradient-to-br from-slate-800 to-slate-900 relative overflow-hidden flex items-center justify-center group-hover:from-blue-600 group-hover:to-cyan-500 transition-colors duration-500">
-                  {/* Decorative Elements */}
-                  <div className="absolute top-4 right-4 text-white/10 group-hover:text-white/30 transition-colors">
-                    <ExternalLink size={80} />
-                  </div>
-                  <div className="z-10 flex flex-col items-center gap-3">
-                    <div className="p-4 bg-slate-950/50 backdrop-blur-md rounded-2xl border border-white/10 group-hover:scale-110 transition-transform duration-500 shadow-xl">
-                      <Code size={40} className="text-cyan-400 group-hover:text-white" />
+              {projects.map((project, index) => (
+                <a 
+                  key={index}
+                  href={project.link} 
+                  target="_blank" 
+                  rel="noreferrer" 
+                  className="group rounded-3xl overflow-hidden bg-slate-900 border border-slate-800 hover:border-cyan-500/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(6,182,212,0.3)] flex flex-col h-full"
+                >
+                  <div className={`h-56 w-full bg-gradient-to-br from-slate-800 to-slate-900 relative overflow-hidden flex items-center justify-center ${project.gradient} transition-colors duration-500`}>
+                    {/* Decorative Elements */}
+                    <div className="absolute top-4 right-4 text-white/10 group-hover:text-white/30 transition-colors">
+                      <ExternalLink size={80} />
                     </div>
-                    <span className="opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 text-white font-bold tracking-widest text-sm bg-black/30 px-4 py-1.5 rounded-full backdrop-blur-sm">BACA JURNAL</span>
+                    <div className="z-10 flex flex-col items-center gap-3">
+                      <div className="p-4 bg-slate-950/50 backdrop-blur-md rounded-2xl border border-white/10 group-hover:scale-110 transition-transform duration-500 shadow-xl">
+                        <Code size={40} className="text-cyan-400 group-hover:text-white" />
+                      </div>
+                      <span className="opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 text-white font-bold tracking-widest text-sm bg-black/30 px-4 py-1.5 rounded-full backdrop-blur-sm">{project.btnText}</span>
+                    </div>
                   </div>
-                </div>
-                
-                <div className="p-8 flex-1 flex flex-col relative bg-slate-900">
-                  <div className="flex justify-between items-start mb-4">
-                    <span className="text-xs font-black text-cyan-400 tracking-widest uppercase bg-cyan-500/10 px-3 py-1 rounded-full">Jurnal Web</span>
+                  
+                  <div className="p-8 flex-1 flex flex-col relative bg-slate-900">
+                    <div className="flex justify-between items-start mb-4">
+                      <span className="text-xs font-black text-cyan-400 tracking-widest uppercase bg-cyan-500/10 px-3 py-1 rounded-full">{project.category}</span>
+                    </div>
+                    <h3 className="text-xl font-bold text-slate-100 mb-4 group-hover:text-cyan-400 transition-colors leading-snug">{project.title}</h3>
+                    <p className="text-slate-400 text-sm mb-8 flex-1 leading-relaxed">{project.desc}</p>
+                    <div className="flex flex-wrap gap-2 mt-auto pt-4 border-t border-slate-800">
+                      {project.tags.map(tag => (
+                        <span key={tag} className="text-xs font-semibold px-3 py-1.5 bg-slate-950 text-slate-300 rounded-lg border border-slate-800">{tag}</span>
+                      ))}
+                    </div>
                   </div>
-                  <h3 className="text-xl font-bold text-slate-100 mb-4 group-hover:text-cyan-400 transition-colors leading-snug">Aplikasi E-Katalog Genta Fiberglass</h3>
-                  <p className="text-slate-400 text-sm mb-8 flex-1 leading-relaxed">Perancangan aplikasi E-Katalog berbasis web yang dikembangkan untuk mempermudah digitalisasi di wilayah Aceh Selatan.</p>
-                  <div className="flex flex-wrap gap-2 mt-auto pt-4 border-t border-slate-800">
-                    {["Web App", "E-Katalog", "UI/UX"].map(tag => (
-                      <span key={tag} className="text-xs font-semibold px-3 py-1.5 bg-slate-950 text-slate-300 rounded-lg border border-slate-800">{tag}</span>
-                    ))}
-                  </div>
-                </div>
-              </a>
+                </a>
+              ))}
 
               {/* Sertifikat Cards */}
               {certificates.map((cert, index) => (
