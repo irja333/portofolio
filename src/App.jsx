@@ -55,6 +55,15 @@ export default function App() {
     }
   };
 
+  const navItems = [
+    { name: 'Beranda', id: 'beranda' },
+    { name: 'Tentang', id: 'tentang' },
+    { name: 'Pengalaman', id: 'pengalaman' },
+    { name: 'Hasil Karya', id: 'karya' },
+    { name: 'Sertifikat', id: 'sertifikat' },
+    { name: 'Kontak', id: 'kontak' }
+  ];
+
   // Data Keahlian dari CV
   const skills = [
     "Web Development", "Data Entry", "Data Analysis", "Artificial Intelligence", 
@@ -182,13 +191,13 @@ export default function App() {
           
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-1 items-center bg-slate-900/50 p-1 rounded-full border border-slate-800/50 backdrop-blur-md">
-            {['Beranda', 'Tentang', 'Pengalaman', 'Hasil', 'Kontak'].map((item) => (
+            {navItems.map((item) => (
               <button 
-                key={item}
-                onClick={() => scrollToSection(item.toLowerCase())}
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
                 className="px-5 py-2 text-slate-300 hover:text-cyan-400 hover:bg-slate-800 rounded-full transition-all text-sm font-medium tracking-wide"
               >
-                {item}
+                {item.name}
               </button>
             ))}
             <a 
@@ -209,13 +218,13 @@ export default function App() {
         {/* Mobile Menu Dropdown */}
         {isMenuOpen && (
           <div className="md:hidden absolute top-full left-0 w-full bg-slate-950/95 backdrop-blur-2xl border-t border-slate-800 flex flex-col py-6 px-6 shadow-2xl animate-fade-in-up">
-            {['Beranda', 'Tentang', 'Pengalaman', 'Hasil', 'Kontak'].map((item) => (
+            {navItems.map((item) => (
               <button 
-                key={item}
-                onClick={() => scrollToSection(item.toLowerCase())}
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
                 className="text-left py-4 px-4 rounded-xl text-slate-300 hover:text-cyan-400 hover:bg-slate-800/50 transition-colors font-medium mb-1"
               >
-                {item}
+                {item.name}
               </button>
             ))}
             <a 
@@ -268,7 +277,7 @@ export default function App() {
               </p>
               
               <div className="flex flex-wrap gap-4 pt-2">
-                <button onClick={() => scrollToSection('hasil')} className="px-8 py-4 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold hover:shadow-[0_0_25px_rgba(6,182,212,0.5)] hover:-translate-y-1 transition-all duration-300 flex items-center gap-2 group">
+                <button onClick={() => scrollToSection('karya')} className="px-8 py-4 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold hover:shadow-[0_0_25px_rgba(6,182,212,0.5)] hover:-translate-y-1 transition-all duration-300 flex items-center gap-2 group">
                   Lihat Hasil Karya <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform" />
                 </button>
                 <div className="flex gap-4 items-center px-4">
@@ -426,7 +435,7 @@ export default function App() {
                           <h3 className="font-bold text-xl text-slate-100">{exp.title}</h3>
                         </div>
                         <h4 className="text-sm font-semibold text-slate-400 mb-4 flex items-center gap-2">
-                          <div className="w-1.5 h-1.5 rounded-full bg-purple-500"></div>
+                          <span className="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
                           {exp.company}
                         </h4>
                         <p className="text-slate-400 text-sm leading-relaxed">{exp.desc}</p>
@@ -497,7 +506,7 @@ export default function App() {
                     <span className="text-xs font-bold text-purple-400 bg-purple-500/10 px-3 py-1.5 rounded-full w-fit">Mar 2023 - Mar 2025</span>
                   </div>
                   <p className="text-slate-400 font-medium mb-4 flex items-center gap-2">
-                    <div className="w-1.5 h-1.5 rounded-full bg-cyan-500"></div>
+                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>
                     Himpunan Pendidikan Teknologi Informasi
                   </p>
                   <ul className="grid sm:grid-cols-2 gap-3 mt-4">
@@ -514,16 +523,15 @@ export default function App() {
           </div>
         </section>
 
-        {/* HASIL / SERTIFIKAT SECTION */}
-        <section id="hasil" className="py-24 relative">
+        {/* HASIL KARYA SECTION */}
+        <section id="karya" className="py-24 relative">
           <div className="max-w-7xl mx-auto px-6 md:px-12">
             <div className="flex items-center gap-4 mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-100">Etalase <span className="text-cyan-400">Karya & Pencapaian</span></h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-100">Hasil <span className="text-cyan-400">Karya</span></h2>
               <div className="h-[1px] flex-1 bg-gradient-to-r from-slate-700 to-transparent ml-4 hidden sm:block"></div>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              
               {/* Card Jurnal/Proyek */}
               {projects.map((project, index) => (
                 <a 
@@ -560,7 +568,19 @@ export default function App() {
                   </div>
                 </a>
               ))}
+            </div>
+          </div>
+        </section>
 
+        {/* SERTIFIKAT SECTION */}
+        <section id="sertifikat" className="py-24 bg-slate-900/30 relative">
+          <div className="max-w-7xl mx-auto px-6 md:px-12">
+            <div className="flex items-center gap-4 mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-100">Sertifikat <span className="text-cyan-400">Resmi</span></h2>
+              <div className="h-[1px] flex-1 bg-gradient-to-r from-slate-700 to-transparent ml-4 hidden sm:block"></div>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {/* Sertifikat Cards */}
               {certificates.map((cert, index) => (
                 <div key={index} className="group rounded-3xl overflow-hidden bg-slate-900 border border-slate-800 hover:border-purple-500/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(168,85,247,0.3)] flex flex-col h-full">
