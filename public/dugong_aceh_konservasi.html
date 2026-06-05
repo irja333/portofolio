@@ -604,8 +604,8 @@
                             </a>
                         </div>
 
-                        <!-- Hidden input to store watermarked image data URL for submission -->
-                        <input type="hidden" id="photo-data-input" name="photo_data">
+                        <!-- Hidden input to store watermarked image data URL for preview/validation -->
+                        <input type="hidden" id="photo-data-input">
                     </div>
                     <button type="submit" class="w-full bg-neon-cyan hover:bg-white text-deep-sea font-bold py-4 rounded-xl transition-all duration-300 text-lg shadow-neon hover:shadow-neon-strong">
                         Kirim Laporan
@@ -1220,20 +1220,10 @@
         // Initialize Instagram Frames
         loadInstagramFrames();
 
-        // Helper to convert base64 image data URL into a File object for FormSubmit attachment
-        function dataURLtoFile(dataurl, filename) {
-            const arr = dataurl.split(',');
-            const mime = arr[0].match(/:(.*?);/)[1];
-            const bstr = atob(arr[1]);
-            let n = bstr.length;
-            const u8arr = new Uint8Array(n);
-            while (n--) {
-                u8arr[n] = bstr.charCodeAt(n);
-            }
-            return new File([u8arr], filename, { type: mime });
-        }
+        // --- Konfigurasi Google Apps Script (Ubah dengan URL Web App Anda) ---
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby5cSq6MRfWC7KVGDp4ufNnVVDDcSrKk1K6_3NafsYZauNTAHtixo_i45OhIUW9mcG9/exec';
 
-        // --- Simple Form Handler (With Verification validation & FormSubmit API Integration) ---
+        // --- Simple Form Handler (With Verification validation & Google Apps Script Integration) ---
         const reportForm = document.getElementById('reportForm');
         reportForm.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -1254,57 +1244,66 @@
 
             const formData = new FormData(reportForm);
             
-            // Append metadata fields to the FormData
-            formData.append('Latitude', infoLat.textContent);
-            formData.append('Longitude', infoLon.textContent);
-            formData.append('Waktu Pengambilan', infoDate.textContent);
-            formData.append('Akurasi GPS', infoAccuracy.textContent);
-            
-            // Add dynamic clickable Google Maps link for easy verification in email
-            if (infoLat.textContent !== '-' && infoLon.textContent !== '-') {
-                const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${infoLat.textContent},${infoLon.textContent}`;
-                formData.append('Link Google Maps', mapsUrl);
+            // Prepare payload data for Google Apps Script
+            const payload = {
+                nama: formData.get('Nama Pelapor'),
+                whatsapp: formData.get('Nomor WhatsApp'),
+                kondisi: formData.get('Kondisi Dugong'),
+                catatan: formData.get('Catatan Tambahan'),
+                latitude: infoLat.textContent,
+                longitude: infoLon.textContent,
+                waktu: infoDate.textContent,
+                akurasi: infoAccuracy.textContent,
+                maps_url: (infoLat.textContent !== '-' && infoLon.textContent !== '-')
+                    ? `https://www.google.com/maps/search/?api=1&query=${infoLat.textContent},${infoLon.textContent}`
+                    : '',
+                photo_base64: photoData
+            };
+
+            // If APPS_SCRIPT_URL is not set, run in simulation mode (useful for local preview)
+            if (APPS_SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL') {
+                console.warn("Google Apps Script URL belum dikonfigurasi. Menjalankan mode simulasi.");
+                
+                setTimeout(() => {
+                    btn.disabled = false;
+                    btn.innerHTML = '<i class="fa-solid fa-check mr-2"></i> Laporan Terkirim (Simulasi)!';
+                    btn.classList.replace('bg-neon-cyan', 'bg-neon-green');
+                    btn.classList.replace('text-deep-sea', 'text-deep-sea');
+                    btn.classList.replace('hover:bg-white', 'hover:bg-neon-green');
+                    btn.classList.replace('shadow-neon', 'shadow-[0_0_15px_rgba(0,255,157,0.5)]');
+
+                    alert("Simulasi sukses! Untuk mengirim email asli, silakan buat Google Apps Script Web App dan pasang URL-nya pada variabel APPS_SCRIPT_URL di dalam kode HTML.");
+
+                    setTimeout(() => {
+                        reportForm.reset();
+                        resetPhotoContainer();
+                        btn.innerHTML = originalText;
+                        btn.classList.replace('bg-neon-green', 'bg-neon-cyan');
+                        btn.classList.replace('hover:bg-neon-green', 'hover:bg-white');
+                        btn.classList.replace('shadow-[0_0_15px_rgba(0,255,157,0.5)]', 'shadow-neon');
+                    }, 3000);
+                }, 1500);
+                return;
             }
-            
-            // Add custom FormSubmit fields
-            formData.append('_subject', 'Laporan Penampakan Dugong Baru - Terverifikasi Kamera/GPS');
-            formData.append('_template', 'table'); // Professional table layout for email
-            formData.append('_captcha', 'false');  // Disable captcha for seamless AJAX
-            formData.append('_replyto', 'irjaz110@gmail.com');
 
-            // Convert base64 captured photo into File object and attach it as an actual file
-            try {
-                if (photoData.startsWith('data:')) {
-                    const filename = `dugong_${Date.now()}.jpg`;
-                    const file = dataURLtoFile(photoData, filename);
-                    formData.append('attachment', file);
-                }
-            } catch (err) {
-                console.error("Gagal mengonversi file gambar:", err);
-            }
-
-            // Remove raw base64 photo data to prevent massive text blocks in the email body
-            formData.delete('photo_data');
-
-            fetch('https://formsubmit.co/ajax/irjaz110@gmail.com', {
+            fetch(APPS_SCRIPT_URL, {
                 method: 'POST',
-                body: formData
+                headers: {
+                    'Content-Type': 'text/plain;charset=utf-8' // Send as text/plain to bypass CORS preflight
+                },
+                body: JSON.stringify(payload),
+                redirect: 'follow'
             })
             .then(response => response.json())
             .then(data => {
                 btn.disabled = false;
-                if (data.success === 'true') {
+                if (data.success || data.status === 'success') {
                     // Neon success styling
                     btn.innerHTML = '<i class="fa-solid fa-check mr-2"></i> Laporan Terkirim!';
                     btn.classList.replace('bg-neon-cyan', 'bg-neon-green');
                     btn.classList.replace('text-deep-sea', 'text-deep-sea');
                     btn.classList.replace('hover:bg-white', 'hover:bg-neon-green');
                     btn.classList.replace('shadow-neon', 'shadow-[0_0_15px_rgba(0,255,157,0.5)]');
-
-                    // Check if activation is required (FormSubmit first submission notice)
-                    if (data.message && data.message.includes('activate')) {
-                        alert("Laporan terkirim! Silakan periksa email irjaz110@gmail.com untuk melakukan aktivasi penerimaan FormSubmit.");
-                    }
                     
                     setTimeout(() => {
                         reportForm.reset();
@@ -1315,19 +1314,21 @@
                         btn.classList.replace('shadow-[0_0_15px_rgba(0,255,157,0.5)]', 'shadow-neon');
                     }, 3000);
                 } else {
-                    throw new Error("FormSubmit Failed");
+                    throw new Error(data.message || "Gagal mengirim laporan");
                 }
             })
             .catch(error => {
                 console.error("Gagal mengirim laporan:", error);
                 btn.disabled = false;
-                // Fallback simulation so user experience is not broken in offline / sandboxed environments
+                // Fallback simulation
                 btn.innerHTML = '<i class="fa-solid fa-check mr-2"></i> Laporan Terkirim (Simulasi)!';
                 btn.classList.replace('bg-neon-cyan', 'bg-neon-green');
                 btn.classList.replace('text-deep-sea', 'text-deep-sea');
                 btn.classList.replace('hover:bg-white', 'hover:bg-neon-green');
                 btn.classList.replace('shadow-neon', 'shadow-[0_0_15px_rgba(0,255,157,0.5)]');
                 
+                alert("Gagal terhubung ke Google Apps Script: " + error.message + "\n\nMenampilkan hasil simulasi lokal.");
+
                 setTimeout(() => {
                     reportForm.reset();
                     resetPhotoContainer();
