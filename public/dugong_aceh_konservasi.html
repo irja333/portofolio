@@ -838,7 +838,7 @@
                                 </div>
                             </div>
                             <div
-                                class="mt-3 grid grid-cols-2 gap-2 text-xs font-mono text-gray-300 bg-deep-sea/60 p-3 rounded-xl border border-mid-cyan/20">
+                                class="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-mono text-gray-300 bg-deep-sea/60 p-3 rounded-xl border border-mid-cyan/20">
                                 <div><span class="text-neon-cyan font-semibold">📍 LAT:</span> <a id="info-lat-link"
                                         target="_blank" class="cursor-default"><span id="info-lat">-</span></a></div>
                                 <div><span class="text-neon-cyan font-semibold">📍 LON:</span> <a id="info-lon-link"
@@ -1002,7 +1002,7 @@
                         </div>
 
                         <!-- Live Metadata overlay on HUD -->
-                        <div class="flex justify-between items-start z-10 w-full">
+                        <div class="flex flex-col sm:flex-row gap-2 justify-between items-start sm:items-center z-10 w-full">
                             <div id="hud-gps-badge"
                                 class="px-2.5 py-1 rounded-full bg-red-955/70 border border-red-500/30 text-[10px] font-mono text-red-400 flex items-center gap-1.5 backdrop-blur-sm">
                                 <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
@@ -1274,16 +1274,6 @@
                         const h = canvas.height;
 
                         const barHeight = Math.max(60, Math.round(h * 0.12));
-                        ctx.fillStyle = 'rgba(2, 13, 20, 0.85)';
-                        ctx.fillRect(0, h - barHeight, w, barHeight);
-
-                        ctx.strokeStyle = '#00f0ff';
-                        ctx.lineWidth = Math.max(2, Math.round(h * 0.003));
-                        ctx.beginPath();
-                        ctx.moveTo(0, h - barHeight);
-                        ctx.lineTo(w, h - barHeight);
-                        ctx.stroke();
-
                         const paddingX = Math.round(w * 0.03);
                         const fontSizeMain = Math.max(12, Math.round(barHeight * 0.22));
                         const fontSizeSub = Math.max(10, Math.round(barHeight * 0.16));
@@ -1294,31 +1284,101 @@
                         const pad = (n) => String(n).padStart(2, '0');
                         const formattedDate = `${timestamp.getFullYear()}-${pad(timestamp.getMonth() + 1)}-${pad(timestamp.getDate())} ${pad(timestamp.getHours())}:${pad(timestamp.getMinutes())}:${pad(timestamp.getSeconds())} WIB`;
 
-                        // Left: Title & coordinates
-                        ctx.fillStyle = '#00f0ff';
-                        ctx.font = `bold ${fontSizeMain}px sans-serif`;
-                        ctx.fillText('📷 DUGONG ACEH CONSERVATION - VERIFIED', paddingX, h - barHeight + barHeight * 0.3);
-
-                        ctx.fillStyle = '#ffffff';
-                        ctx.font = `${fontSizeSub}px monospace`;
+                        const titleText = '📷 DUGONG ACEH CONSERVATION - VERIFIED';
                         const gpsText = lat !== null
                             ? `LAT: ${lat.toFixed(6)} | LON: ${lon.toFixed(6)} (Akurasi: ±${Math.round(accuracy)}m)`
                             : 'LOKASI GPS: TIDAK TERSEDIA (TIDAK TERVERIFIKASI)';
-                        ctx.fillText(`📍 ${gpsText}`, paddingX, h - barHeight + barHeight * 0.7);
+                        const dateLabel = 'WAKTU PENGAMBILAN';
+                        const dateText = formattedDate;
 
-                        // Right: Date
-                        ctx.textAlign = 'right';
-                        ctx.fillStyle = '#00ff9d';
+                        // Check if texts would overlap
                         ctx.font = `bold ${fontSizeMain}px sans-serif`;
-                        ctx.fillText('WAKTU PENGAMBILAN', w - paddingX, h - barHeight + barHeight * 0.3);
+                        const titleWidth = ctx.measureText(titleText).width;
+                        const dateLabelWidth = ctx.measureText(dateLabel).width;
 
-                        ctx.fillStyle = '#ffffff';
                         ctx.font = `${fontSizeSub}px monospace`;
-                        ctx.fillText(formattedDate, w - paddingX, h - barHeight + barHeight * 0.7);
+                        const gpsWidth = ctx.measureText(`📍 ${gpsText}`).width;
+                        const dateTextWidth = ctx.measureText(dateText).width;
 
-                        // Draw status indicator bar on the side
-                        ctx.fillStyle = lat !== null ? '#00ff9d' : '#ef4444';
-                        ctx.fillRect(w - 5, h - barHeight, 5, barHeight);
+                        const availableWidth = w - paddingX * 2 - 20; // 20px buffer gap
+                        const needsStackedLayout = (titleWidth + dateLabelWidth > availableWidth) || (gpsWidth + dateTextWidth > availableWidth) || (w < 700);
+
+                        if (needsStackedLayout) {
+                            const stackedBarHeight = Math.max(85, Math.round(h * 0.16));
+                            ctx.fillStyle = 'rgba(2, 13, 20, 0.85)';
+                            ctx.fillRect(0, h - stackedBarHeight, w, stackedBarHeight);
+
+                            ctx.strokeStyle = '#00f0ff';
+                            ctx.lineWidth = Math.max(2, Math.round(h * 0.003));
+                            ctx.beginPath();
+                            ctx.moveTo(0, h - stackedBarHeight);
+                            ctx.lineTo(w, h - stackedBarHeight);
+                            ctx.stroke();
+
+                            const lineSpacing = stackedBarHeight / 4;
+
+                            // Left align for all stacked items
+                            ctx.textAlign = 'left';
+
+                            // Line 1: Title (Cyan)
+                            ctx.fillStyle = '#00f0ff';
+                            ctx.font = `bold ${fontSizeMain}px sans-serif`;
+                            ctx.fillText(titleText, paddingX, h - stackedBarHeight + lineSpacing * 1);
+
+                            // Line 2: GPS coordinates (White)
+                            ctx.fillStyle = '#ffffff';
+                            ctx.font = `${fontSizeSub}px monospace`;
+                            ctx.fillText(`📍 ${gpsText}`, paddingX, h - stackedBarHeight + lineSpacing * 2);
+
+                            // Line 3: Timestamp (Green label, white value)
+                            ctx.fillStyle = '#00ff9d';
+                            ctx.font = `bold ${fontSizeSub}px sans-serif`;
+                            const dateLabelText = '📅 WAKTU PENGAMBILAN: ';
+                            ctx.fillText(dateLabelText, paddingX, h - stackedBarHeight + lineSpacing * 3);
+
+                            const dateLabelTextWidth = ctx.measureText(dateLabelText).width;
+                            ctx.fillStyle = '#ffffff';
+                            ctx.font = `${fontSizeSub}px monospace`;
+                            ctx.fillText(dateText, paddingX + dateLabelTextWidth, h - stackedBarHeight + lineSpacing * 3);
+
+                            // Draw status indicator bar on the side
+                            ctx.fillStyle = lat !== null ? '#00ff9d' : '#ef4444';
+                            ctx.fillRect(w - 5, h - stackedBarHeight, 5, stackedBarHeight);
+                        } else {
+                            ctx.fillStyle = 'rgba(2, 13, 20, 0.85)';
+                            ctx.fillRect(0, h - barHeight, w, barHeight);
+
+                            ctx.strokeStyle = '#00f0ff';
+                            ctx.lineWidth = Math.max(2, Math.round(h * 0.003));
+                            ctx.beginPath();
+                            ctx.moveTo(0, h - barHeight);
+                            ctx.lineTo(w, h - barHeight);
+                            ctx.stroke();
+
+                            // Left: Title & coordinates
+                            ctx.textAlign = 'left';
+                            ctx.fillStyle = '#00f0ff';
+                            ctx.font = `bold ${fontSizeMain}px sans-serif`;
+                            ctx.fillText(titleText, paddingX, h - barHeight + barHeight * 0.3);
+
+                            ctx.fillStyle = '#ffffff';
+                            ctx.font = `${fontSizeSub}px monospace`;
+                            ctx.fillText(`📍 ${gpsText}`, paddingX, h - barHeight + barHeight * 0.7);
+
+                            // Right: Date
+                            ctx.textAlign = 'right';
+                            ctx.fillStyle = '#00ff9d';
+                            ctx.font = `bold ${fontSizeMain}px sans-serif`;
+                            ctx.fillText(dateLabel, w - paddingX, h - barHeight + barHeight * 0.3);
+
+                            ctx.fillStyle = '#ffffff';
+                            ctx.font = `${fontSizeSub}px monospace`;
+                            ctx.fillText(dateText, w - paddingX, h - barHeight + barHeight * 0.7);
+
+                            // Draw status indicator bar on the side
+                            ctx.fillStyle = lat !== null ? '#00ff9d' : '#ef4444';
+                            ctx.fillRect(w - 5, h - barHeight, 5, barHeight);
+                        }
 
                         resolve(canvas.toDataURL('image/jpeg', 0.85));
                     };
