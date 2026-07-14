@@ -1270,35 +1270,35 @@ img {
 
 /* Cum Laude Custom Styles */
 .edu-highlight.highlight-cumlaude {
-    background: linear-gradient(135deg, rgba(255, 215, 0, 0.05) 0%, rgba(212, 175, 55, 0.02) 100%);
-    border: 1px solid rgba(212, 175, 55, 0.15);
+    background: linear-gradient(135deg, rgba(46, 204, 113, 0.05) 0%, rgba(39, 174, 96, 0.02) 100%);
+    border: 1px solid rgba(46, 204, 113, 0.15);
 }
 
 .edu-highlight.highlight-cumlaude .highlight-icon {
-    background: rgba(212, 175, 55, 0.12);
-    color: #ffd700;
+    background: rgba(46, 204, 113, 0.12);
+    color: #2ecc71;
 }
 
 .edu-highlight.highlight-cumlaude:hover {
-    border-color: rgba(255, 215, 0, 0.4);
-    box-shadow: 0 0 15px rgba(255, 215, 0, 0.12);
+    border-color: rgba(46, 204, 113, 0.4);
+    box-shadow: 0 0 15px rgba(46, 204, 113, 0.12);
     transform: translateY(-2px);
     transition: all var(--transition-base);
 }
 
 body.light-theme .edu-highlight.highlight-cumlaude {
-    background: linear-gradient(135deg, rgba(212, 175, 55, 0.06) 0%, rgba(184, 134, 11, 0.03) 100%);
-    border-color: rgba(212, 175, 55, 0.2);
+    background: linear-gradient(135deg, rgba(39, 174, 96, 0.06) 0%, rgba(30, 130, 76, 0.03) 100%);
+    border-color: rgba(39, 174, 96, 0.2);
 }
 
 body.light-theme .edu-highlight.highlight-cumlaude .highlight-icon {
-    background: rgba(212, 175, 55, 0.1);
-    color: #b8860b;
+    background: rgba(39, 174, 96, 0.1);
+    color: #27ae60;
 }
 
 body.light-theme .edu-highlight.highlight-cumlaude:hover {
-    border-color: #b8860b;
-    box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
+    border-color: #27ae60;
+    box-shadow: 0 0 15px rgba(39, 174, 96, 0.15);
 }
 
 .badge-cumlaude {
@@ -1308,9 +1308,9 @@ body.light-theme .edu-highlight.highlight-cumlaude:hover {
     font-weight: 700;
     padding: 2px 8px;
     border-radius: var(--radius-full);
-    background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(212, 175, 55, 0.1) 100%);
-    color: #ffd700;
-    border: 1px solid rgba(255, 215, 0, 0.25);
+    background: linear-gradient(135deg, rgba(46, 204, 113, 0.15) 0%, rgba(39, 174, 96, 0.1) 100%);
+    color: #2ecc71;
+    border: 1px solid rgba(46, 204, 113, 0.25);
     margin-left: 8px;
     vertical-align: middle;
     letter-spacing: 0.03em;
@@ -1319,9 +1319,9 @@ body.light-theme .edu-highlight.highlight-cumlaude:hover {
 }
 
 body.light-theme .badge-cumlaude {
-    background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(184, 134, 11, 0.1) 100%);
-    color: #b8860b;
-    border-color: rgba(212, 175, 55, 0.3);
+    background: linear-gradient(135deg, rgba(39, 174, 96, 0.15) 0%, rgba(30, 130, 76, 0.1) 100%);
+    color: #27ae60;
+    border-color: rgba(39, 174, 96, 0.3);
 }
 
 .edu-grid-secondary {
@@ -1493,8 +1493,20 @@ body.light-theme .badge-cumlaude {
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 24px;
+}
+
+@media (min-width: 900px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1200px) {
+    .projects-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
 
 .project-card {
