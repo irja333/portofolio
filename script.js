@@ -642,17 +642,60 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     if (themeToggle && themeIcon) {
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('light-theme');
-            const isLight = document.body.classList.contains('light-theme');
-            
-            // Toggle icon
-            if (isLight) {
-                themeIcon.className = 'fas fa-moon';
-                localStorage.setItem('theme', 'light');
+        themeToggle.addEventListener('click', (e) => {
+            const toggleTheme = () => {
+                document.body.classList.toggle('light-theme');
+                const isLight = document.body.classList.contains('light-theme');
+                
+                // Toggle icon
+                if (isLight) {
+                    themeIcon.className = 'fas fa-moon';
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    themeIcon.className = 'fas fa-sun';
+                    localStorage.setItem('theme', 'dark');
+                }
+            };
+
+            // Circular ripple clip-path transition using View Transitions API
+            if (document.startViewTransition) {
+                const rect = themeToggle.getBoundingClientRect();
+                const x = e.clientX ?? rect.left + rect.width / 2;
+                const y = e.clientY ?? rect.top + rect.height / 2;
+                
+                const endRadius = Math.hypot(
+                    Math.max(x, window.innerWidth - x),
+                    Math.max(y, window.innerHeight - y)
+                );
+
+                const transition = document.startViewTransition(() => {
+                    toggleTheme();
+                });
+
+                transition.ready.then(() => {
+                    const clipPath = [
+                        `circle(0px at ${x}px ${y}px)`,
+                        `circle(${endRadius}px at ${x}px ${y}px)`
+                    ];
+                    
+                    document.documentElement.animate(
+                        {
+                            clipPath: clipPath
+                        },
+                        {
+                            duration: 480,
+                            easing: 'ease-in-out',
+                            pseudoElement: '::view-transition-new(root)'
+                        }
+                    );
+                });
             } else {
-                themeIcon.className = 'fas fa-sun';
-                localStorage.setItem('theme', 'dark');
+                // Fallback transition for older browsers (fade transition)
+                document.body.classList.add('theme-transitioning');
+                toggleTheme();
+                setTimeout(() => {
+                    document.body.classList.remove('theme-transitioning');
+                }, 500);
             }
             
             // Add a temporary micro-animation to the icon
