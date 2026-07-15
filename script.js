@@ -140,35 +140,125 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ========================================
-    // 2.5 CURSOR TRAIL EFFECT (Dots)
+    // 2.5 NEON CURSOR LIGHTSABER TRAIL EFFECT
     // ========================================
     if (window.innerWidth > 768) {
-        const blueColors = ['#00cef5', '#74b9ff', '#81ecec', '#0984e3', '#1e90ff'];
-        let lastTrailTime = 0;
-
+        const cursorCanvas = document.createElement('canvas');
+        cursorCanvas.id = 'cursorCanvas';
+        document.body.appendChild(cursorCanvas);
+        const cCtx = cursorCanvas.getContext('2d');
+        
+        function resizeCursorCanvas() {
+            cursorCanvas.width = window.innerWidth;
+            cursorCanvas.height = window.innerHeight;
+        }
+        resizeCursorCanvas();
+        window.addEventListener('resize', resizeCursorCanvas);
+        
+        let points = [];
+        let targetX = undefined;
+        let targetY = undefined;
+        let currentX = 0;
+        let currentY = 0;
+        let firstMove = false;
+        
         document.addEventListener('mousemove', (e) => {
-            const now = Date.now();
-            if (now - lastTrailTime < 20) return; // smooth and fast dots
-            lastTrailTime = now;
-
-            const dot = document.createElement('div');
-            dot.className = 'cursor-trail';
-            const color = blueColors[Math.floor(Math.random() * blueColors.length)];
-            const size = Math.random() * 6 + 4; // 4px to 10px
-            
-            dot.style.cssText = `
-                left: ${e.clientX}px;
-                top: ${e.clientY}px;
-                width: ${size}px;
-                height: ${size}px;
-                --trail-color: ${color};
-            `;
-            document.body.appendChild(dot);
-
-            setTimeout(() => {
-                dot.remove();
-            }, 800);
+            targetX = e.clientX;
+            targetY = e.clientY;
+            if (!firstMove) {
+                currentX = targetX;
+                currentY = targetY;
+                firstMove = true;
+            }
         });
+        
+        function drawTrail() {
+            cCtx.clearRect(0, 0, cursorCanvas.width, cursorCanvas.height);
+            
+            if (firstMove) {
+                // Easing calculation for ultra-smooth movement
+                currentX += (targetX - currentX) * 0.12;
+                currentY += (targetY - currentY) * 0.12;
+                
+                points.push({
+                    x: currentX,
+                    y: currentY,
+                    age: 1.0
+                });
+                
+                if (points.length > 25) {
+                    points.shift();
+                }
+            }
+            
+            // Age points
+            for (let i = 0; i < points.length; i++) {
+                if (i === points.length - 1) {
+                    // Make the leading cursor tip pulse and NEVER fade out completely when idle
+                    points[i].age = 0.9 + Math.sin(Date.now() * 0.015) * 0.1;
+                } else {
+                    points[i].age -= 0.045; // age older points in the trail
+                }
+            }
+            points = points.filter(p => p.age > 0);
+            
+            if (points.length > 0) {
+                cCtx.lineCap = 'round';
+                cCtx.lineJoin = 'round';
+                
+                // 1. Draw glowing outer lightsaber halo
+                cCtx.shadowBlur = 15;
+                cCtx.shadowColor = '#6c5ce7'; // Neon purple lightsaber glow
+                
+                if (points.length === 1) {
+                    const p = points[0];
+                    cCtx.beginPath();
+                    cCtx.arc(p.x, p.y, p.age * 6, 0, Math.PI * 2);
+                    cCtx.fillStyle = `rgba(108, 92, 231, ${p.age * 0.7})`;
+                    cCtx.fill();
+                } else {
+                    for (let i = 1; i < points.length; i++) {
+                        const p1 = points[i - 1];
+                        const p2 = points[i];
+                        cCtx.beginPath();
+                        cCtx.moveTo(p1.x, p1.y);
+                        cCtx.lineTo(p2.x, p2.y);
+                        cCtx.lineWidth = p2.age * 12;
+                        cCtx.strokeStyle = `rgba(108, 92, 231, ${p2.age * 0.7})`;
+                        cCtx.stroke();
+                    }
+                }
+                
+                // 2. Draw intense hot white inner core
+                cCtx.shadowBlur = 4;
+                cCtx.shadowColor = '#ffffff';
+                
+                if (points.length === 1) {
+                    const p = points[0];
+                    cCtx.beginPath();
+                    cCtx.arc(p.x, p.y, p.age * 2, 0, Math.PI * 2);
+                    cCtx.fillStyle = `rgba(255, 255, 255, ${p.age})`;
+                    cCtx.fill();
+                } else {
+                    for (let i = 1; i < points.length; i++) {
+                        const p1 = points[i - 1];
+                        const p2 = points[i];
+                        cCtx.beginPath();
+                        cCtx.moveTo(p1.x, p1.y);
+                        cCtx.lineTo(p2.x, p2.y);
+                        cCtx.lineWidth = p2.age * 4;
+                        cCtx.strokeStyle = `rgba(255, 255, 255, ${p2.age})`;
+                        cCtx.stroke();
+                    }
+                }
+                
+                cCtx.shadowBlur = 0; // reset
+            }
+            
+            requestAnimationFrame(drawTrail);
+        }
+        
+        drawTrail();
     }
 
     // ========================================
